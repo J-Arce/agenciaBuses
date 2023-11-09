@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pasajeros</title>
+    </head>
+    <body>
+        <div>LISTADO DE PASAJEROS</div>
+
+        {% if pasajeros %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Rut</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Tipo de Pasajero</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pasajero in pasajeros %}
+                <tr>
+                    <td>{{ pasajero.nombre }}</td>
+                    <td>{{ pasajero.rut }}</td>
+                    <td>{{ pasajero.edad }}</td>
+                    <td>{{ pasajero.telefono }}</td>
+                    <td>{{ pasajero.email }}</td>
+                    <td>{{ pasajero.tipoPasajero }}</td>
+                    <td><a href="/actualizarPasajero/{{ pasajero.id }}">ACTUALIZAR</td>
+                    <td><a href="/eliminarPasajero/{{ pasajero.id }}">ELIMINAR</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <div role="alert">
+            <strong>No se encuentran pasajeros en el sistema</strong>
+        </div>
+
+        {% endif %}
+
+        <a href="../">VOLVER</a>
+        <a href="../agregarPasajero">AGREGAR PASAJERO</a>
+    </body>
+</html>
